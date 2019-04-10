@@ -1,8 +1,20 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 class App extends Component {
+  componentDidMount() {
+    this.fetchProducts();
+  }
+
+  async fetchProducts() {
+    const response = await fetch(
+      "http://localhost:4000/nordstrom?top=3&keyword=red%20dresses"
+    );
+    const json = await response.json();
+    console.log(json);
+  }
+
   render() {
     return (
       <div className="App">

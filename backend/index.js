@@ -1,12 +1,14 @@
 const express = require("express");
+const cors = require("cors");
+const app = express();
+app.use(cors());
+
 const request = require("request-promise").defaults({
   headers: {
     Authorization: "apikey 8ea31c48-95c3-4bcf-9db1-d6ada47565f2",
     NordApiVersion: 1
   }
 });
-
-const app = express();
 
 app.listen(4000, () => {
   console.log("Server running on port 4000");
