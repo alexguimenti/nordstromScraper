@@ -13,8 +13,9 @@ app.listen(4000, () => {
 });
 
 app.get("/nordstrom", async (req, res, next) => {
-  const url =
-    "https://query.ecommerce.api.nordstrom.com/api/queryresults/keywordsearch/?top=1&IncludeFacets=false&Keyword=prom%20dresses";
+  const numberOfTop = req.query.top;
+  const keyword = encodeURIComponent(req.query.keyword);
+  const url = `https://query.ecommerce.api.nordstrom.com/api/queryresults/keywordsearch/?top=${numberOfTop}&IncludeFacets=false&Keyword=${keyword}`;
   const json = await request.get(url);
   res.setHeader("Content-Type", "application/json");
   res.send(json);
